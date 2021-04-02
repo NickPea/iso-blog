@@ -17,7 +17,8 @@ const BrowserApp = () => {
 	//after render, remove server rendered jss
 	useEffect(() => {
 		// delete (window as any).__INITIAL_SERVER_STATE__;
-		document.querySelector("style[data-client-removable-ssr-jss]").remove();
+		const ssrStyles = document.querySelector("style[data-client-removable-ssr-jss]");
+		ssrStyles&&ssrStyles.remove();
 	}, []);
 
 	return (
