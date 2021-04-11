@@ -2,7 +2,7 @@
 
 import React, {Fragment} from 'react'
 import { Link } from 'react-router-dom';
-import routeList from './app-routes';
+import routeList from './routes';
 
 
 export default () => {
