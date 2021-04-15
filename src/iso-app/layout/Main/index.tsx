@@ -12,9 +12,9 @@ const useStyles = createUseStyles({
 	container: {
 		display: "grid",
 		gridTemplateAreas: `
-			'left-nav left-nav left-nav left-nav left-nav'
-			'main main main main main'
-			'footer footer footer footer footer'
+			'left-nav left-nav left-nav'
+			'main main main'
+			'footer footer footer'
 		`,
 	},
 	left_nav: {
@@ -32,17 +32,19 @@ const useStyles = createUseStyles({
 	},
 	"@media (min-width: 600px)": {
 		container: {
+			gridTemplateColumns: '30% auto auto',
 			gridTemplateAreas: `
-			'left-nav main main main main'
-			'footer footer footer footer footer'
+			'left-nav main main'
+			'footer footer footer'
 		`,
 		},
 	},
 	"@media (min-width: 900px)": {
 		container: {
+			gridTemplateColumns: '25% auto 20%',
 			gridTemplateAreas: `
-			'left-nav main main main right-nav'
-			'footer footer footer footer footer'
+			'left-nav main right-nav'
+			'footer footer footer'
 		`,
 		},
 		right_nav: {

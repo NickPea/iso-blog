@@ -5,11 +5,26 @@ import { createUseStyles } from "react-jss";
 
 const useGlobalStyles = createUseStyles({
 	"@global": {
+		'*': {
+			boxSizing: 'border-box',
+		},
 		body: {
 			margin: 0,
 		},
 		"p, h1, h2, h3, h4, h5 ,h6": {
 			margin: 0,
+		},
+		"@media (min-width: 600px)": {
+			h1: {
+				fontSize: "2rem",
+			},
+			h2: { fontSize: "1.5rem" },
+		},
+		"@media (min-width: 900px)": {
+			h1: {
+				fontSize: "3rem",
+			},
+			h2: { fontSize: "2rem" },
 		},
 	},
 	presets: {

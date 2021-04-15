@@ -4,8 +4,8 @@ import React from "react";
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
-	page: {
-		padding: "3%",
+	pageWrapper: {
+		padding: "5%",
 	},
 });
 
@@ -13,5 +13,5 @@ export default (props) => {
 	//
 	const classes = useStyles();
 
-	return <div className={classes.page}>{props.children}</div>;
+	return <div className={classes.pageWrapper}>{props.children}</div>;
 };

@@ -8,17 +8,19 @@ import imgPath from "../../../assets/headshot.jpeg";
 import GenericNav from "../../routing/GenericNav";
 
 const useStyles = createUseStyles({
-	container: {
+	leftNavWrapper: {
+		height: '100%',
+
 		backgroundColor: "var(--leftnav-color)",
-		padding: "15% 0",
+		padding: "20% 0",
 
 		display: "flex",
 		flexFlow: "column nowrap",
 		alignItems: "center",
 	},
 	headShot: {
-		height: 150,
-		width: 150,
+		height: 130,
+		width: 130,
 		objectFit: "cover",
 		borderRadius: "50%",
 		border: "5px solid white",
@@ -45,9 +47,9 @@ export default () => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.container}>
+		<div className={classes.leftNavWrapper}>
 			<img className={classes.headShot} src={imgPath} alt="headshot image" />
-			<h1 className={classes.title}>Nick Phillips</h1>
+			<h2 className={classes.title}>Nick Phillips</h2>
 			<h4 className={classes.subText}>Lets work it out together!</h4>
 			<nav className={classes.navPosition}>
 				<GenericNav

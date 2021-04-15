@@ -8,10 +8,9 @@ import imgPath from "../../../assets/headshot.jpeg";
 import GenericNav from "../../routing/GenericNav";
 
 const useStyles = createUseStyles({
-	container: {
-		padding: "15%",
+	rightNavWrapper: {
+		padding: '15vh 5vw 0 0',
 	},
-
 	title: {
 		color: "var(--dull-text)",
 		fontWeight: "normal",
@@ -35,14 +34,14 @@ export default () => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.container}>
-			<h3 className={classes.title}>Categories</h3>
-			<nav className={classes.list}>
-				<div>Node</div>
-				<div>React</div>
-				<div>Javascript</div>
-				<div>Css</div>
-			</nav>
-		</div>
+			<div className={classes.rightNavWrapper}>
+				<h3 className={classes.title}>Categories</h3>
+				<nav className={classes.list}>
+					<div>Node</div>
+					<div>React</div>
+					<div>Javascript</div>
+					<div>Css</div>
+				</nav>
+			</div>
 	);
 };

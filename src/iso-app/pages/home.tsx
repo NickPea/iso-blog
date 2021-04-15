@@ -1,24 +1,37 @@
 //
 
 import React from "react";
-import { createUseStyles } from "react-jss";
 import { RootStateOrAny, useSelector } from "react-redux";
 //prefetch
 import ApiService from "../../server/serve-api/api-service";
-import PageWrapper from "../components/Utils/PageWrapper";
-//
+//components
+import PagePadding from "../components/Utils/PageWrapper";
+import Article from "../components/Article";
 
-const useStyles = createUseStyles({});
+//delete me
+import mocktailImage from "../../assets/mocktail.jpg";
+//
 
 const HomePage = () => {
 	//
 	const state = useSelector((state: RootStateOrAny) => state);
 	//
-	const classes = useStyles();
+	return (
+		<PagePadding>
+			<Article
+				title={"a compelling title"}
+				imgSrc={mocktailImage}
+				imgAlt="food photography of a berry mocktail"
+				imgCaption="the new delicious mocktail"
+				bodyHtml={"<p>and example paragraph</p>"}
+			/>
+		</PagePadding>
+	);
+}; //
 
-	return <PageWrapper></PageWrapper>;
-};
-
+/**
+ * SSR State Hydrater
+ */
 HomePage.getPrefetchFunctions = function () {
 	return [
 		async (params: object) => {
