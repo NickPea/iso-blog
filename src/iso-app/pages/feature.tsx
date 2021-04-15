@@ -2,13 +2,10 @@
 
 import React from "react";
 import { createUseStyles } from "react-jss";
-import RouterNavigation from "../routing/RouterNavigation";
+import PageWrapper from "../components/Utils/PageWrapper";
+import GenericNav from "../routing/GenericNav";
 
-const useStyles = createUseStyles((theme) => ({
-	monkey: {
-		backgroundColor: "blueviolet",
-	},
-}));
+const useStyles = createUseStyles((theme) => ({}));
 
 const MockPage = () => {
 	//
@@ -16,11 +13,9 @@ const MockPage = () => {
 	const jssClasses = useStyles();
 
 	return (
-		<div>
-			<RouterNavigation />
+		<PageWrapper>
 			<div>Feature Page</div>
-			<div className={jssClasses.monkey}>I'mma stylin Up in 'ere!</div>
-		</div>
+		</PageWrapper>
 	);
 };
 

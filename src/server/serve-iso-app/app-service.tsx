@@ -10,7 +10,7 @@ import htmlTemplate from "./html-template";
 import { merge } from "lodash";
 import { Store } from "redux";
 import { JssProvider, SheetsRegistry, createGenerateId } from "react-jss";
-import routeList from "../../iso-app/routing/app-routes";
+import routeList from "../../iso-app/routing/routes";
 
 //
 

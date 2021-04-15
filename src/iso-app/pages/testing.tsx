@@ -1,25 +1,20 @@
 //
 
 import React from "react";
+import PageWrapper from "../components/Utils/PageWrapper";
 //components
-import HomeOverview from '../components/HeroOverview';
-import RouterNavigation from "../routing/RouterNavigation";
+import GenericNav from "../routing/GenericNav";
 
 const FeaturePage = () => {
 	return (
-		<div>
-			<RouterNavigation />
-			<div>...Testing...</div>
-			<br/>
-			<HomeOverview />
-		</div>
+		<PageWrapper>
+			<div>Testing Page</div>
+		</PageWrapper>
 	);
 };
 
 FeaturePage.getPrefetchFunctions = () => {
-	return [
-		(routeParams:object)=>{}
-	];
+	return [(routeParams: object) => {}];
 };
 
 export default FeaturePage;
