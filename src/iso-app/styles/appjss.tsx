@@ -14,7 +14,7 @@ const useGlobalStyles = createUseStyles({
 	},
 	presets: {
 		fontFamily: "sans-serif",
-		"--leftnav-color": "rgb(51,195,102)",
+		"--leftnav-color": "rgb(40,40,90)",
 		"--rightnav-color": "whitesmoke",
 		"--light-text": "whitesmoke",
 		"--dull-text": "rgb(119,119,119)",

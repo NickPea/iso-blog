@@ -12,21 +12,42 @@ const useStyles = createUseStyles({
 	container: {
 		display: "grid",
 		gridTemplateAreas: `
-			'left main main main right'
+			'left-nav left-nav left-nav left-nav left-nav'
+			'main main main main main'
 			'footer footer footer footer footer'
 		`,
 	},
-	left: {
-		gridArea: "left",
+	left_nav: {
+		gridArea: "left-nav",
 	},
 	main: {
 		gridArea: "main",
 	},
-	right: {
-		gridArea: "right",
+	right_nav: {
+		gridArea: "right-nav",
+		display: "none",
 	},
 	footer: {
 		gridArea: "footer",
+	},
+	"@media (min-width: 600px)": {
+		container: {
+			gridTemplateAreas: `
+			'left-nav main main main main'
+			'footer footer footer footer footer'
+		`,
+		},
+	},
+	"@media (min-width: 900px)": {
+		container: {
+			gridTemplateAreas: `
+			'left-nav main main main right-nav'
+			'footer footer footer footer footer'
+		`,
+		},
+		right_nav: {
+			display: "block",
+		},
 	},
 });
 
@@ -40,11 +61,11 @@ export default ({ children }: PropTypes) => {
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.left}>
+			<div className={classes.left_nav}>
 				<LeftNav />
 			</div>
 			<div className={classes.main}>{children}</div>
-			<div className={classes.right}>
+			<div className={classes.right_nav}>
 				<RightNav />
 			</div>
 			<div className={classes.footer}>

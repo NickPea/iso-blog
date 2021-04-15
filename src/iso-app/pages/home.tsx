@@ -6,9 +6,6 @@ import { RootStateOrAny, useSelector } from "react-redux";
 //prefetch
 import ApiService from "../../server/serve-api/api-service";
 import PageWrapper from "../components/Utils/PageWrapper";
-//DELETE ME
-import moduleName from '../../../'
-
 //
 
 const useStyles = createUseStyles({});
@@ -19,11 +16,7 @@ const HomePage = () => {
 	//
 	const classes = useStyles();
 
-	return (
-		<PageWrapper>
-			
-		</PageWrapper>
-	);
+	return <PageWrapper></PageWrapper>;
 };
 
 HomePage.getPrefetchFunctions = function () {
