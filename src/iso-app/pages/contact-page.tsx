@@ -2,10 +2,9 @@
 
 import React from "react";
 import PageWrapper from "../components/Utils/PageWrapper";
-//components
-import GenericNav from "../routing/GenericNav";
 
-const FeaturePage = () => {
+
+const ContactPage = () => {
 	return (
 		<PageWrapper>
 			<div>Testing Page</div>
@@ -13,8 +12,8 @@ const FeaturePage = () => {
 	);
 };
 
-FeaturePage.getPrefetchFunctions = () => {
+ContactPage.getPrefetchFunctions = () => {
 	return [(routeParams: object) => {}];
 };
 
-export default FeaturePage;
+export default ContactPage;

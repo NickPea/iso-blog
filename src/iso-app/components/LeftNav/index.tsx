@@ -9,10 +9,10 @@ import GenericNav from "../../routing/GenericNav";
 
 const useStyles = createUseStyles({
 	leftNavWrapper: {
-		height: '100%',
+		height: "100%",
 
-		backgroundColor: "var(--leftnav-color)",
-		padding: "20% 0",
+		backgroundColor: "var(--primary-color)",
+		padding: "15% 0",
 
 		display: "flex",
 		flexFlow: "column nowrap",
@@ -31,14 +31,10 @@ const useStyles = createUseStyles({
 		color: "var(--light-text)",
 		marginBottom: "5px",
 	},
-	subText: {
+	subTitle: {
 		color: "var(--dull-text)",
 		fontWeight: "100",
 		marginBottom: "30px",
-	},
-	navPosition: {
-		alignSelf: "start",
-		paddingLeft: "50px",
 	},
 });
 
@@ -50,16 +46,14 @@ export default () => {
 		<div className={classes.leftNavWrapper}>
 			<img className={classes.headShot} src={imgPath} alt="headshot image" />
 			<h2 className={classes.title}>Nick Phillips</h2>
-			<h4 className={classes.subText}>Lets work it out together!</h4>
-			<nav className={classes.navPosition}>
-				<GenericNav
-					color={"var(--light-text)"}
-					hoverColor={"white"}
-					stack
-					spacing={"20px"}
-					size={"1.2rem"}
-				/>
-			</nav>
+			<h4 className={classes.subTitle}>Lets work it out together!</h4>
+			<GenericNav
+				color={"var(--light-text)"}
+				hoverColor={"var(--dull-text)"}
+				stack
+				spacing={"30px"}
+				size={"1.2rem"}
+			/>
 		</div>
 	);
 };

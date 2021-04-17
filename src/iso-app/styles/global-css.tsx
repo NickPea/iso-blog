@@ -5,8 +5,8 @@ import { createUseStyles } from "react-jss";
 
 const useGlobalStyles = createUseStyles({
 	"@global": {
-		'*': {
-			boxSizing: 'border-box',
+		"*": {
+			boxSizing: "border-box",
 		},
 		body: {
 			margin: 0,
@@ -29,11 +29,12 @@ const useGlobalStyles = createUseStyles({
 	},
 	presets: {
 		fontFamily: "sans-serif",
-		"--leftnav-color": "rgb(40,40,90)",
+		"--primary-color": "rgb(40,40,90)",
 		"--rightnav-color": "whitesmoke",
 		"--light-text": "whitesmoke",
 		"--dull-text": "rgb(119,119,119)",
 		"--dark-text": "rgb(50,50,50)",
+		"--light-hover-color": "rgb(230,230,230)",
 	},
 });
 

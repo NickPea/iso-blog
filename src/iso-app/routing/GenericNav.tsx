@@ -30,9 +30,11 @@ const useStyles = createUseStyles({
 		color: (props: Proptypes) => (props.color ? props.color : "inherit"),
 		fontSize: (props: Proptypes) => (props.size ? props.size : "1rem"),
 		textDecoration: "none",
-		'&:hover': {
-			color: (props: Proptypes) => (props.hoverColor? props.hoverColor: 'inherit')
-		}
+		"&:hover": {
+			color: (props: Proptypes) =>
+				props.hoverColor ? props.hoverColor : "inherit",
+		},
+		textAlign: "center",
 	},
 });
 
@@ -42,14 +44,18 @@ export default (props: Proptypes) => {
 	const classes = useStyles(props);
 
 	return (
-		<div className={classes.container}>
-			{routeList.map((route) => {
-				return (
-					<Link className={classes.item} key={route.path} to={route.path}>
-						{route.label}
-					</Link>
-				);
-			})}
-		</div>
+		<nav>
+			<div className={classes.container}>
+				{routeList.map((route) => {
+					if (route.navigatable) {
+						return (
+							<Link className={classes.item} key={route.path} to={route.path}>
+								{route.label}
+							</Link>
+						);
+					}
+				})}
+			</div>
+		</nav>
 	);
 };

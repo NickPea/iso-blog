@@ -1,31 +1,37 @@
 //
 
-import React from "react";
+import React, { Fragment } from "react";
 import { RootStateOrAny, useSelector } from "react-redux";
 //prefetch
 import ApiService from "../../server/serve-api/api-service";
 //components
-import PagePadding from "../components/Utils/PageWrapper";
+import PageWrapper from "../components/Utils/PageWrapper";
 import Article from "../components/Article";
 
 //delete me
-import mocktailImage from "../../assets/mocktail.jpg";
-//
+import { articles } from "../../../DATA-DELETE";
 
 const HomePage = () => {
 	//
 	const state = useSelector((state: RootStateOrAny) => state);
 	//
 	return (
-		<PagePadding>
-			<Article
-				title={"a compelling title"}
-				imgSrc={mocktailImage}
-				imgAlt="food photography of a berry mocktail"
-				imgCaption="the new delicious mocktail"
-				bodyHtml={"<p>and example paragraph</p>"}
-			/>
-		</PagePadding>
+		<PageWrapper>
+			{articles.map((article) => {
+				return (
+					<div key={article.slug}>
+						<Article
+							
+							title={article.title}
+							publishDate={article.createdAt}
+							bodyHtml={article.bodyHtml}
+							linkTo={article.slug}
+						/>
+						<hr/>
+					</div>
+				);
+			})}
+		</PageWrapper>
 	);
 }; //
 
