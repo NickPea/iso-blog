@@ -1,9 +1,9 @@
 //
 
-import React from 'react'
-import { Route, Switch } from 'react-router';
-import routeList from './routes';
-
+import React from "react";
+import { Route, Switch } from "react-router";
+import PageWrapper from "../components/utilities/PageWrapper";
+import routeList from "./routes";
 
 export default () => {
 	return (
@@ -16,7 +16,7 @@ export default () => {
 				);
 			})}
 			<Route path="*">
-				<div>404: page not found</div>
+				<PageWrapper>404: page not found</PageWrapper>
 			</Route>
 		</Switch>
 	);

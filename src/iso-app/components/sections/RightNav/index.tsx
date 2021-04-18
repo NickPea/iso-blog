@@ -1,13 +1,10 @@
 //
 
-import React, { Fragment } from "react";
+import React from "react";
 import { createUseStyles } from "react-jss";
-//assets
-import imgPath from "../../../assets/headshot.jpeg";
-//components
 import { Link } from "react-router-dom";
 //delete
-import { categories } from "../../../../DATA-DELETE";
+import { categories } from "../../../../../DATA-DELETE";
 
 const useStyles = createUseStyles({
 	rightNavWrapper: {
@@ -22,14 +19,13 @@ const useStyles = createUseStyles({
 		padding: "10px 5px",
 		borderBottom: "1px solid lightgrey",
 		color: "var(--dull-text)",
-		fontWeight: 'normal',
+		fontWeight: "normal",
 
 		transition: "300ms",
 		"&:hover": {
 			color: "var(--primary-color)",
 			backgroundColor: "var(--light-hover-color)",
 			borderRadius: "5px",
-
 		},
 	},
 	linkReset: {
@@ -48,11 +44,13 @@ export default () => {
 			<nav>
 				{categories.map((category) => {
 					return (
-						<h4 key={category.label} className={classes.linkItem}>
-							<Link className={classes.linkReset} to={category.slug}>
-								{category.label}
-							</Link>
-						</h4>
+						<Link
+							key={category.label}
+							className={classes.linkReset}
+							to={category.slug}
+						>
+							<h4 className={classes.linkItem}>{category.label}</h4>
+						</Link>
 					);
 				})}
 			</nav>

@@ -30,10 +30,13 @@ const useGlobalStyles = createUseStyles({
 	presets: {
 		fontFamily: "sans-serif",
 		"--primary-color": "rgb(40,40,90)",
-		"--rightnav-color": "whitesmoke",
+		"--secondary-color": "rgb(234,34,75)",
+		"--dull-color": "rgb(119,119,119)",
+
 		"--light-text": "whitesmoke",
-		"--dull-text": "rgb(119,119,119)",
 		"--dark-text": "rgb(50,50,50)",
+		"--dull-text": "rgb(119,119,119)",
+
 		"--light-hover-color": "rgb(230,230,230)",
 	},
 });

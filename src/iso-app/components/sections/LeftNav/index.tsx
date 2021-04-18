@@ -3,9 +3,9 @@
 import React, { Fragment } from "react";
 import { createUseStyles } from "react-jss";
 //assets
-import imgPath from "../../../assets/headshot.jpeg";
+import imgPath from "../../../../assets/headshot.jpeg";
 //components
-import GenericNav from "../../routing/GenericNav";
+import GenericNav from "../../../routing/GenericNav";
 
 const useStyles = createUseStyles({
 	leftNavWrapper: {
@@ -32,8 +32,7 @@ const useStyles = createUseStyles({
 		marginBottom: "5px",
 	},
 	subTitle: {
-		color: "var(--dull-text)",
-		fontWeight: "100",
+		color: "var(--secondary-color)",
 		marginBottom: "30px",
 	},
 });
@@ -46,7 +45,7 @@ export default () => {
 		<div className={classes.leftNavWrapper}>
 			<img className={classes.headShot} src={imgPath} alt="headshot image" />
 			<h2 className={classes.title}>Nick Phillips</h2>
-			<h4 className={classes.subTitle}>Lets work it out together!</h4>
+			<h4 className={classes.subTitle}>Bring it together!</h4>
 			<GenericNav
 				color={"var(--light-text)"}
 				hoverColor={"var(--dull-text)"}

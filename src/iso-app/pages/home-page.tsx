@@ -5,8 +5,8 @@ import { RootStateOrAny, useSelector } from "react-redux";
 //prefetch
 import ApiService from "../../server/serve-api/api-service";
 //components
-import PageWrapper from "../components/Utils/PageWrapper";
-import Article from "../components/Article";
+import PageWrapper from "../components/utilities/PageWrapper";
+import Article from "../components/singles/Article";
 
 //delete me
 import { articles } from "../../../DATA-DELETE";
@@ -21,13 +21,12 @@ const HomePage = () => {
 				return (
 					<div key={article.slug}>
 						<Article
-							
 							title={article.title}
 							publishDate={article.createdAt}
 							bodyHtml={article.bodyHtml}
 							linkTo={article.slug}
 						/>
-						<hr/>
+						<hr />
 					</div>
 				);
 			})}
@@ -36,8 +35,9 @@ const HomePage = () => {
 }; //
 
 /**
- * SSR State Hydrater
+ * server-side route-match request and fetched data
  */
+
 HomePage.getPrefetchFunctions = function () {
 	return [
 		async (params: object) => {

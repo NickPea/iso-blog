@@ -50,7 +50,7 @@ const useStyles = createUseStyles({
 
 interface Proptypes {
 	title: string;
-	publishDate: Date;
+	publishDate: string;
 	bodyHtml: any;
 	linkTo?: string;
 	imgSrc?: string;

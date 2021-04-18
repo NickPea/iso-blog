@@ -9,6 +9,11 @@ const useStyles = createUseStyles({
 		padding: "5%",
 		textAlign: "center",
 	},
+	"@media (min-width: 900px)": {
+		footerWrapper: {
+			padding: "10%",
+		},
+	},
 });
 
 export default () => {
@@ -18,8 +23,9 @@ export default () => {
 	return (
 		<div className={classes.footerWrapper}>
 			<p>
-				Copyright: {new Date(Date.now()).getFullYear()} - Programming with Nick
-				- Powered by Love.
+				Copyright: {new Date(Date.now()).getFullYear()} -- Programming with Nick --
+				<br />
+				Powered by Love.
 			</p>
 		</div>
 	);

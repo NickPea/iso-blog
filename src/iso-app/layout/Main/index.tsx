@@ -2,20 +2,26 @@
 
 import React, { ReactElement } from "react";
 import { createUseStyles } from "react-jss";
+import AuthButton from "../../components/singles/AuthButton";
 
 //components
-import Footer from "../../components/Footer";
-import LeftNav from "../../components/LeftNav";
-import RightNav from "../../components/RightNav";
+import Footer from "../../components/sections/Footer";
+import LeftNav from "../../components/sections/LeftNav";
+import RightNav from "../../components/sections/RightNav";
+import TopNav from "../../components/sections/TopNav";
 
 const useStyles = createUseStyles({
-	container: {
+	mainLayoutWrapper: {
 		display: "grid",
 		gridTemplateAreas: `
+			'top-nav top-nav top-nav'
 			'left-nav left-nav left-nav'
 			'main main main'
 			'footer footer footer'
 		`,
+	},
+	top_nav: {
+		gridArea: "top-nav",
 	},
 	left_nav: {
 		gridArea: "left-nav",
@@ -31,18 +37,20 @@ const useStyles = createUseStyles({
 		gridArea: "footer",
 	},
 	"@media (min-width: 600px)": {
-		container: {
-			gridTemplateColumns: '30% auto auto',
+		mainLayoutWrapper: {
+			gridTemplateColumns: "30% auto auto",
 			gridTemplateAreas: `
+			'top-nav top-nav top-nav'
 			'left-nav main main'
 			'footer footer footer'
 		`,
 		},
 	},
 	"@media (min-width: 900px)": {
-		container: {
-			gridTemplateColumns: '25% auto 20%',
+		mainLayoutWrapper: {
+			gridTemplateColumns: "25% auto 20%",
 			gridTemplateAreas: `
+			'top-nav top-nav top-nav'
 			'left-nav main right-nav'
 			'footer footer footer'
 		`,
@@ -62,7 +70,10 @@ export default ({ children }: PropTypes) => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.container}>
+		<div className={classes.mainLayoutWrapper}>
+			<div className={classes.top_nav}>
+				<TopNav />
+			</div>
 			<div className={classes.left_nav}>
 				<LeftNav />
 			</div>

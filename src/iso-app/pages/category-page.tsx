@@ -2,35 +2,40 @@
 
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { match, useParams } from "react-router";
 //components
-import PageWrapper from "../components/Utils/PageWrapper";
-import Article from "../components/Article";
+import PageWrapper from "../components/utilities/PageWrapper";
+import Article from "../components/singles/Article";
 import { createUseStyles } from "react-jss";
 
 //styles
 const useStyles = createUseStyles({
-	noArticlesFound: {
-		
-	}
-})
+	notFound: {
+		fontWeight: "normal",
+	},
+});
 
 const ArticlePage = () => {
 	//
-
 
 	/**
 	 *  client-side route-match and load data
 	 */
 
 	const params: { categoryslug: string } = useParams();
-	const [fetchedArticles, setfetchedArticles] = useState({ count: 0, items: [] });
+	const [fetchedArticlesForCategory, setFetchedArticlesForCategory] = useState({
+		count: 0,
+		items: [],
+	});
 	useEffect(() => {
 		axios
 			.get(`api/category/${params.categoryslug}`)
 			.then((res) => res.data)
 			.then((data) => {
-				// set state with data
+				setFetchedArticlesForCategory(data);
+			})
+			.catch((err) => {
+				console.error(err);
 			});
 	});
 
@@ -38,15 +43,23 @@ const ArticlePage = () => {
 	 * render
 	 */
 
+	//classes
+	const classes = useStyles();
+
+	//computed
+	let isArticlesFound = fetchedArticlesForCategory.count > 0;
+
 	return (
 		<PageWrapper>
-			<div>Category Page</div>
-			{fetchedArticles.count === 0 && (
-				<h4>No articles found for {params.categoryslug}</h4>
+			{!isArticlesFound && (
+				<h4>
+					No articles found for "
+					<i className={classes.notFound}>{params.categoryslug}</i>" category.
+				</h4>
 			)}
-			{fetchedArticles.count > 0 && (
+			{isArticlesFound && (
 				<Fragment>
-					{fetchedArticles.items.map((article) => {
+					{fetchedArticlesForCategory.items.map((article) => {
 						return (
 							<div key={article.slug}>
 								<Article
@@ -70,7 +83,7 @@ const ArticlePage = () => {
  */
 
 ArticlePage.getPrefetchFunctions = () => {
-	return [];
+	return [async (routeParams: object) => {}];
 };
 
 export default ArticlePage;
