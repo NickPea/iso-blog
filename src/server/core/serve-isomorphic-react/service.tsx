@@ -4,13 +4,13 @@ import React, { ReactElement } from "react";
 import reactDomServer from "react-dom/server";
 import { StaticRouter, matchPath, match } from "react-router-dom";
 import { Provider } from "react-redux";
-import IsoApp from "../../iso-app/app";
-import { createIsoStore } from "../../iso-app/state/store";
+import IsoApp from "../../../iso-app/app";
+import { createIsoStore } from "../../../iso-app/state/store";
 import htmlTemplate from "./html-template";
 import { merge } from "lodash";
 import { Store } from "redux";
 import { JssProvider, SheetsRegistry, createGenerateId } from "react-jss";
-import routeList from "../../iso-app/routing/routes";
+import routeList from "../../../iso-app/routing/routes";
 
 //
 

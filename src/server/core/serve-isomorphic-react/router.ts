@@ -1,7 +1,7 @@
 //
 
 import express from 'express';
-import SSRController from './app-controller';
+import SSRController from './controller';
 
 const router = express.Router();
 

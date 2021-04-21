@@ -5,8 +5,8 @@ import path from "path";
 //
 import morgan from "morgan";
 //
-import ApiRouter from "../serve-api/api-router";
-import IsoAppRouter from "../serve-iso-app/app-router";
+import ApiRouter from "../domain/serve-api/api-router";
+import IsoAppRouter from "../core/serve-isomorphic-react/router";
 
 // ------------------------------------------------------ //
 

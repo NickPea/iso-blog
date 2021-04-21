@@ -1,7 +1,7 @@
 //
 
 import { NextFunction, Request, Response } from "express";
-import AppService from "./app-service";
+import AppService from "./service";
 
 export default class {
 	//

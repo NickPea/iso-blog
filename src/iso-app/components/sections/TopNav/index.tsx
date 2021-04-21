@@ -9,10 +9,18 @@ const useStyles = createUseStyles({
 		padding: "2%",
 		backgroundColor: "var(--primary-color)",
 
-        //position content
+		//position content
 		display: "flex",
 		flexFlow: "row wrap",
-		justifyContent: "flex-end",
+		justifyContent: "space-between",
+	},
+	"@media (min-width: 600px)": {
+		topNavWrapper: {
+			padding: "1%",
+
+			//position content
+			justifyContent: "flex-end",
+		},
 	},
 });
 

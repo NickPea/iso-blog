@@ -6,19 +6,16 @@ import { createUseStyles } from "react-jss";
 import PageWrapper from "../../components/utilities/PageWrapper";
 import FormControl from "../../components/singles/FormControl";
 import PageTitle from "../../components/singles/PageTitle";
+import CustomFormButton from "../../components/singles/CustomFormButton";
+import CustomFormWrapper from "../../components/singles/CustomFormWrapper";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
+import RightNav from "../../components/sections/RightNav";
 
 const useStyles = createUseStyles({
-	FormWrapper: {
-		width: "100%",
+	forgotPassword: {
+		textAlign: "right",
 		paddingBottom: "10%",
-	},
-	"@media (min-width:600px)": {
-		FormWrapper: {},
-	},
-	"@media (min-width:900px)": {
-		FormWrapper: {
-			width: "50%",
-		},
 	},
 });
 
@@ -27,6 +24,9 @@ interface Proptypes {}
 const LoginPage = () => {
 	//
 
+	//hooks
+	const classes = useStyles();
+	const history = useHistory();
 	const [_formData, set_formData] = useState({
 		email: "",
 		password: "",
@@ -40,15 +40,19 @@ const LoginPage = () => {
 	//on submit
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		//validate
+		//send
+		alert(JSON.stringify(_formData));
+		//clean
+		set_formData({ email: "", password: "" });
+		//redirect
+		history.goBack();
 	};
-
-	//classes
-	const classes = useStyles();
 
 	return (
 		<PageWrapper>
 			<PageTitle>Log in.</PageTitle>
-			<form className={classes.FormWrapper} onSubmit={handleSubmit}>
+			<CustomFormWrapper onSubmit={handleSubmit}>
 				<FormControl>
 					<label htmlFor="email">Email</label>
 					<input
@@ -69,7 +73,11 @@ const LoginPage = () => {
 						onChange={handleChange}
 					/>
 				</FormControl>
-			</form>
+				<CustomFormButton>Login</CustomFormButton>
+				<Link to={"/reset-password"}>
+					<p className={classes.forgotPassword}>Forgotten password</p>
+				</Link>
+			</CustomFormWrapper>
 		</PageWrapper>
 	);
 };

@@ -45,7 +45,7 @@ export default () => {
 		<div className={classes.leftNavWrapper}>
 			<img className={classes.headShot} src={imgPath} alt="headshot image" />
 			<h2 className={classes.title}>Nick Phillips</h2>
-			<h4 className={classes.subTitle}>Bring it together!</h4>
+			<h4 className={classes.subTitle}>Software Developer</h4>
 			<GenericNav
 				color={"var(--light-text)"}
 				hoverColor={"var(--dull-text)"}

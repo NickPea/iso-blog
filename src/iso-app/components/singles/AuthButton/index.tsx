@@ -1,12 +1,12 @@
 //
 
-import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { createUseStyles, DefaultTheme } from "react-jss";
 import { Link } from "react-router-dom";
 
 const useStyles = createUseStyles({
 	authButton: {
+		margin: "0 5px",
 		padding: "15px",
 
 		color: "var(--light-text)",
@@ -16,7 +16,9 @@ const useStyles = createUseStyles({
 		cursor: "pointer",
 		"&:hover": {
 			transform: "translateY(-1px)",
-			boxShadow: "1px 1px 5px 0 var(--dull-color)",
+		},
+		"&:active": {
+			transform: "translateY(1px)",
 		},
 	},
 	linkReset: {
@@ -27,7 +29,7 @@ const useStyles = createUseStyles({
 
 interface Proptypes {}
 
-export default (props: Proptypes) => {
+const AuthButton = (props: Proptypes) => {
 	//
 
 	// check storage for authtoken
@@ -41,8 +43,23 @@ export default (props: Proptypes) => {
 
 	//render
 	return (
-		<Link className={classes.linkReset} to={isAuth ? "/logout" : "/login"}>
-			<div className={classes.authButton}>{isAuth ? "Logout" : "Login"}</div>
-		</Link>
+		<Fragment>
+			{isAuth ? (
+				<Link className={classes.linkReset} to={"/logout"}>
+					<div className={classes.authButton}>Logout</div>
+				</Link>
+			) : (
+				<Fragment>
+					<Link className={classes.linkReset} to={"/login"}>
+						<div className={classes.authButton}>Login</div>
+					</Link>
+					<Link className={classes.linkReset} to={"/register"}>
+						<div className={classes.authButton}>Register</div>
+					</Link>
+				</Fragment>
+			)}
+		</Fragment>
 	);
 };
+
+export default AuthButton;

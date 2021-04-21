@@ -13,7 +13,7 @@ interface Proptypes {}
 const LogoutPage = () => {
 	//
 
-	//classes
+	//hooks
 	const classes = useStyles();
 
 	return (

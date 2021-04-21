@@ -10,6 +10,7 @@ import LoginPage from "../pages/auth/login";
 import LogoutPage from "../pages/auth/logout";
 import RegisterPage from "../pages/auth/register";
 import ResetPasswordPage from "../pages/auth/reset-password";
+import ResetPasswordEmailSentPage from "../pages/auth/reset-password-email-sent";
 
 export default [
 	{ path: "/", component: HomePage, label: "Home", navigatable: true },
@@ -59,6 +60,12 @@ export default [
 	{
 		path: "/reset-password",
 		component: ResetPasswordPage,
+		label: null,
+		navigatable: false,
+	},
+	{
+		path: "/reset-password-email-sent",
+		component: ResetPasswordEmailSentPage,
 		label: null,
 		navigatable: false,
 	},

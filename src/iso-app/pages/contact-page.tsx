@@ -51,7 +51,12 @@ const useStyles = createUseStyles({
 
 		"&:hover": {
 			transform: "translateY(-1px)",
-			boxShadow: "1px 1px 5px 0 var(--dull-color)",
+		},
+		"&:active": {
+			transform: "translateY(1px)",
+		},
+		"&:focus": {
+			outline: "none",
 		},
 	},
 });

@@ -8,17 +8,15 @@ import FormControl from "../../components/singles/FormControl";
 import PageTitle from "../../components/singles/PageTitle";
 import CustomFormButton from "../../components/singles/CustomFormButton";
 import CustomFormWrapper from "../../components/singles/CustomFormWrapper";
-import { useHistory, useLocation } from "react-router";
 
 const useStyles = createUseStyles({});
 
 interface Proptypes {}
 
-const ResetPasswordPage = () => {
+const ResetPasswordEmailSentPage = () => {
 	//
-
+	
 	//hooks
-	const history = useHistory();
 	const classes = useStyles();
 	const [_formData, set_formData] = useState({
 		email: "",
@@ -32,31 +30,15 @@ const ResetPasswordPage = () => {
 	//on submit
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		//validate
-		//send
-		alert(JSON.stringify(_formData));
-		//clean
-		set_formData({ email: "" });
-		//redirect
-		history.push("/reset-password-email-sent");
 	};
 
 	return (
 		<PageWrapper>
-			<PageTitle>Reset your password.</PageTitle>
-			<CustomFormWrapper onSubmit={handleSubmit}>
-				<FormControl>
-					<label htmlFor="email">Email</label>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						value={_formData.email}
-						onChange={handleChange}
-					/>
-				</FormControl>
-				<CustomFormButton>Reset Password</CustomFormButton>
-			</CustomFormWrapper>
+			<PageTitle>Email sent.</PageTitle>
+			<p>
+				An email has been sent with further instruction on resetting your
+				password.
+			</p>
 		</PageWrapper>
 	);
 };
@@ -65,8 +47,8 @@ const ResetPasswordPage = () => {
  * server-side route-match request and fetched data
  */
 
-ResetPasswordPage.getPrefetchFunctions = function () {
+ResetPasswordEmailSentPage.getPrefetchFunctions = function () {
 	return [async (routeParams: object) => {}];
 };
 
-export default ResetPasswordPage;
+export default ResetPasswordEmailSentPage;
