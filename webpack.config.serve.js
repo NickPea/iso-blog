@@ -1,8 +1,9 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const clientConfig = {
+module.exports = {
   mode: "development",
 
   devtool: "inline-source-map",
@@ -10,11 +11,11 @@ const clientConfig = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
-
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    publicPath: '/',
     compress: true,
-    port: 8080,
+    port: 9000,
   },
 
   target: "web",
@@ -71,5 +72,3 @@ const clientConfig = {
     ],
   },
 };
-
-module.exports = [clientConfig, serverConfig]

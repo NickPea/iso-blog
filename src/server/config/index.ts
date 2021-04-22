@@ -11,7 +11,7 @@ export const DOMAIN_URL = process.env.DOMAIN_URL || 'localhost'
 
 //DB
 export const MONGO_DB_CONNECTION_STRING =
-	process.env.MONGO_DB_CONNECTION_STRING || "mongodb://localhost/test_db";
+	process.env.MONGO_DB_CONNECTION_STRING || "mongodb://localhost/test";
 
 //JWT
 export const JWT_SECRET_OR_PRIVATE_KEY =

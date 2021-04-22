@@ -8,7 +8,12 @@ import trimStrings from "../sanitization/trim-strings";
 import validate from "../validate/middleware";
 import loginSchema from "../validate/schema/login";
 //services
-import AuthService from "./authService";
+import user from "../../database/models/user";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import * as config from "../../config";
+
+//------------------------------------------
 
 const AuthenticationController = express.Router();
 
@@ -18,23 +23,36 @@ AuthenticationController.use([trimStrings()]);
 //routes
 AuthenticationController.post(
 	"/login",
-	[validate(loginSchema)],
+	validate(loginSchema),
 	async (req: Request, res: Response) => {
-		//
-		const validated = req.body;
-		//
-		const user = await AuthService.verifyUserCredentials(
-			validated.email,
-			validated.password
-		);
-		//
-		if (user) {
-			//put user id in token
-			res.json(user)
+		
+		//extract request data
+		const validated: { email: string; password: string } = req.body;
+		
+		//find user via (unique) email
+		const foundUser = await user.findOne({ email: validated.email });
 
-			//return token in cookie
+		//check password match against hashed password
+		const isFoundUserPasswordVerified = foundUser
+			? // await bcrypt.compare(validated.password, foundUser.get('password'))
+			  validated.password === foundUser.get("password")
+			: false;
+
+		//if verified, create token and attach to http-only cookie
+		if (isFoundUserPasswordVerified) {
+			const jwt_id_token = jwt.sign(
+				{ id: foundUser.get("_id") },
+				config.JWT_SECRET_OR_PRIVATE_KEY,
+				{
+					algorithm: "HS256",
+					issuer: config.DOMAIN_URL,
+					subject: foundUser.get("email"),
+					audience: config.DOMAIN_URL,
+				}
+			);
+			res.cookie("jwt_id_token", jwt_id_token, { httpOnly: true }).sendStatus(200);
 		} else {
-			res.status(401).send('bloody monkey nuts');
+			res.sendStatus(401);
 		}
 	}
 );
