@@ -1,6 +1,6 @@
 //
 
 import { app } from "./app";
-import { port } from "../config";
+import * as config from "../config";
 
-app.listen(port, () => console.log(`-- Express Listening on Port: ${port} --`));
+app.listen(config.PORT, () => console.log(`-- Express Listening on Port: ${config.PORT} --`));

@@ -1,53 +1,43 @@
 //
 
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+/** main authentication routes */
 
-export default class {
-	//
+import express, { Request, RequestHandler, Response } from "express";
+//middleware
+import trimStrings from "../sanitization/trim-strings";
+import validate from "../validate/middleware";
+import loginSchema from "../validate/schema/login";
+//services
+import AuthService from "./authService";
 
-	static register(
-		email: string,
-		password: string,
-		passwordRepeat: string,
-		avatar: Blob,
-		name: string
-	) {
-		//validate
-		//email already exists || passwords dont match || etc etc
-		//store image and return unique path
-		//create user (with optional image table relationships ie. 1-1, 1-many or polymorphic)
-	}
-	static login(email: string, password: string) {
-		//verify user credentials
-		//return jwt with user payload
-	}
-	static logout(userId: string) {
-		// do nothing (remove jwt on client), expire cookie, remove return auth header
-	}
+const AuthenticationController = express.Router();
 
-	static recoverPassword(email: string) {
-		//check email belongs to user
-		//if not...log & ignore?
-		//if email valid,
-		//create recover-token and append to recovery url (i.e 'recover-password-verify/23r0sdnslkfj')
-		//send email with recovery url link
-	}
-	static recoverPasswordVerifyToken(token: string) {
-		//recieve recover-token from email link
-		//check users table for recover-token match
-		//if no match...log & ignore?
-		//if matched, redirect to reset password
+//middleware
+AuthenticationController.use([trimStrings()]);
+
+//routes
+AuthenticationController.post(
+	"/login",
+	[validate(loginSchema)],
+	async (req: Request, res: Response) => {
 		//
+		const validated = req.body;
+		//
+		const user = await AuthService.verifyUserCredentials(
+			validated.email,
+			validated.password
+		);
+		//
+		if (user) {
+			//put user id in token
+			res.json(user)
+
+			//return token in cookie
+		} else {
+			res.status(401).send('bloody monkey nuts');
+		}
 	}
-	static resetPassword(
-		userId: string,
-		oldPassword: string,
-		newPassword: string
-	) {
-		//find user
-		//verify old password
-		//replace with new
-		//remove recover-token
-	}
-}
+);
+
+const prefix = express.Router();
+export default prefix.use("/auth", AuthenticationController);

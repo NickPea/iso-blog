@@ -2,6 +2,7 @@
 
 import React, { Fragment } from "react";
 import { createUseStyles } from "react-jss";
+import path from 'path';
 //assets
 import imgPath from "../../../../assets/headshot.jpeg";
 //components
@@ -43,7 +44,7 @@ export default () => {
 
 	return (
 		<div className={classes.leftNavWrapper}>
-			<img className={classes.headShot} src={imgPath} alt="headshot image" />
+			<img className={classes.headShot} src={`/${imgPath}`} alt="headshot image" />
 			<h2 className={classes.title}>Nick Phillips</h2>
 			<h4 className={classes.subTitle}>Software Developer</h4>
 			<GenericNav

@@ -2,24 +2,25 @@
 
 import express from "express";
 import path from "path";
-//
-import morgan from "morgan";
-//
-import ApiRouter from "../domain/serve-api/api-router";
-import IsoAppRouter from "../core/serve-isomorphic-react/router";
-
+//features
+import Api from "../domain/api/controller";
+import Authentication from "../core/authenticate/controller";
+import IsomorphicReact from "../core/isomorphic-react/controller";
 // ------------------------------------------------------ //
 
-import "../loaders";
-
 export const app = express();
+
+//boot default modules
+import "./boot";
 
 //assets
 app.use(express.static(path.join(__dirname, "./")));
 
 //middleware
-app.use(morgan("tiny"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//
-app.use(ApiRouter);
-app.use(IsoAppRouter);
+//feature
+app.use(Api);
+app.use(Authentication);
+app.use(IsomorphicReact);
