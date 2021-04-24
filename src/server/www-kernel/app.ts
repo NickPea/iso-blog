@@ -12,13 +12,13 @@ export const app = express();
 
 //boot default modules
 import "./boot";
+import middleware from "./middleware";
 
 //assets
-app.use(express.static(path.join(__dirname, "./")));
+app.use(express.static(path.join(__dirname, "./"))); //dist directory
 
 //middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(middleware);
 
 //feature
 app.use(Api);

@@ -1,13 +1,13 @@
 //
 
 import mongoose from "mongoose";
-import post from "./post";
+import { PostModel } from "./post";
 
 const categorySchema = new mongoose.Schema({
 	name: String,
-	posts: {
-		type: post,
-	},
+	// posts: {
+	// 	type: PostModel,
+	// },
 });
 
-export default mongoose.model("category", categorySchema);
+export const CategoryModel = mongoose.model("category", categorySchema);
