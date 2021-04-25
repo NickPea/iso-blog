@@ -3,7 +3,6 @@
 //ARTICLES ------------------------------------------------------------------------------------
 
 //images
-import watermelonImage from './src/assets/watermelon-drink.jpg'
 
 //categories
 export const categories = [
@@ -31,7 +30,7 @@ export const articles = [
         title: 'something from somewhere',
         category: 'travel',
         slug: '/article/something-from-somewhere',
-        imgSrc: watermelonImage,
+        imgSrc: '/some-image-path',
         imgAlt: 'a giant peach',
         imgCaption: 'a giant peach',
         bodyHtml: "something from somwwhere <br> the reckoning of flubbernubblet",

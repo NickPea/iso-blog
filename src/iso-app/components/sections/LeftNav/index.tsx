@@ -2,11 +2,12 @@
 
 import React, { Fragment } from "react";
 import { createUseStyles } from "react-jss";
-import path from 'path';
-//assets
-import headshotImagePath from "../../../../assets/headshot.jpeg";
+import path from "path";
 //components
 import GenericNav from "../../../routing/GenericNav";
+//assets
+import headshotImagePath from "../../../../server/assets/headshot.jpeg";
+//
 
 const useStyles = createUseStyles({
 	leftNavWrapper: {
@@ -44,7 +45,11 @@ export default () => {
 
 	return (
 		<div className={classes.leftNavWrapper}>
-			<img className={classes.headShot} src={headshotImagePath} alt="headshot image" />
+			<img
+				className={classes.headShot}
+				src={headshotImagePath}
+				alt="headshot image"
+			/>
 			<h2 className={classes.title}>Nick Phillips</h2>
 			<h4 className={classes.subTitle}>Software Developer</h4>
 			<GenericNav

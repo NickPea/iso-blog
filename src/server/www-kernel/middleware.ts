@@ -3,12 +3,12 @@
 import express from "express";
 const middleware = express.Router();
 
-//middleware imports
-import { fileUploadMiddleware } from "../core/file-upload/middleware";
-import trimStrings from "../core/sanitize/trim-strings";
+//utilities
+import { fileUploadMiddleware } from "../utilities/file-upload/middleware";
+import trimStrings from "../utilities/sanitize/trim-strings";
 
 /**
- * Application-Level Middleware
+ * Server Application-Level Middleware
  */
 
 middleware.use(express.json());

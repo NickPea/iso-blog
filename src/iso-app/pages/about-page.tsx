@@ -8,7 +8,7 @@ import PictureSet from "../components/singles/PictureSet";
 import PageWrapper from "../components/utilities/PageWrapper";
 
 //assets
-import headshotImagePath from "../../assets/headshot.jpeg";
+import headshotImagePath from "../../server/assets/headshot.jpeg";
 
 const useStyles = createUseStyles({
 	pageTitle: {

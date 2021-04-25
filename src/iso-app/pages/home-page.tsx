@@ -3,7 +3,7 @@
 import React, { Fragment } from "react";
 import { RootStateOrAny, useSelector } from "react-redux";
 //prefetch
-import ApiService from "../../server/domain/api/service";
+import ApiService from "../../server/features/domain/api/service";
 //components
 import PageWrapper from "../components/utilities/PageWrapper";
 import Article from "../components/singles/Article";
