@@ -5,7 +5,7 @@ import reactDom from "react-dom";
 import IsoApp from "../iso-app/app";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createIsoStore } from "../iso-app/state/store";
+import { createIsoStore } from "../iso-app/state/store/init";
 
 const BrowserApp = () => {
 	//

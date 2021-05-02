@@ -40,9 +40,9 @@ const HomePage = () => {
 
 HomePage.getPrefetchFunctions = function () {
 	return [
-		async (params: object) => {
-			return await ApiService.generateFakeData();
-		},
+		// async (params: object) => {
+		// 	return await ApiService.generateFakeData();
+		// },
 	];
 };
 

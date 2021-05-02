@@ -13,14 +13,13 @@ const useStyles = createUseStyles({
 	},
 });
 
-interface Proptypes {
-	children: React.ReactNode;
-	onSubmit: (e: React.FormEvent<Element>) => void;
-}
-
-export default (props: Proptypes) => {
+export default (props: any) => {
 	//
 
 	const classes = useStyles();
-	return <form className={classes.formWrapper} onSubmit={props.onSubmit}>{props.children}</form>;
+	return (
+		<form className={classes.formWrapper} {...props}>
+			{props.children}
+		</form>
+	);
 };

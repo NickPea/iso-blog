@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
 		height: "100%",
 
 		backgroundColor: "var(--primary-color)",
-		padding: "15% 0",
+		padding: "10% 0",
 
 		display: "flex",
 		flexFlow: "column nowrap",

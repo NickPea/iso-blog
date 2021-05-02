@@ -1,8 +1,11 @@
 //
 
+import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { createUseStyles, DefaultTheme } from "react-jss";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { AppSetUser } from "../../../state/actions";
 
 const useStyles = createUseStyles({
 	authButton: {
@@ -25,6 +28,15 @@ const useStyles = createUseStyles({
 		color: "inherit",
 		textDecoration: "none",
 	},
+	userAvatar: {
+		height: 45,
+		width: 45,
+		objectFit: "cover",
+		objectPosition: "center",
+		borderRadius: "50%",
+
+		marginRight: 5,
+	},
 });
 
 interface Proptypes {}
@@ -32,22 +44,42 @@ interface Proptypes {}
 const AuthButton = (props: Proptypes) => {
 	//
 
-	// check storage for authtoken
-	const [isAuth, setIsAuth] = useState(false);
-	useEffect(() => {
-		setIsAuth(localStorage.getItem("auth-jwt") ? true : false);
-	});
-
-	//classes
+	const dispatch = useDispatch();
+	const app_auth_user = useSelector((state: any) => state.app.auth.user);
+	const history = useHistory();
 	const classes = useStyles();
+
+	// set user state on load
+	useEffect(() => {
+		axios.get("/auth/user").then((res) => {
+			if (res.status === 200) {
+				dispatch(AppSetUser(res.data));
+			}
+		});
+	}, []);
+
+	//logout and set user state
+	const handleLogout = async () => {
+		await axios.post("/auth/logout");
+		await axios.get("/auth/user").then((res) => dispatch(AppSetUser(res.data)));
+		history.push("/logout");
+	};
 
 	//render
 	return (
 		<Fragment>
-			{isAuth ? (
-				<Link className={classes.linkReset} to={"/logout"}>
-					<div className={classes.authButton}>Logout</div>
-				</Link>
+			{app_auth_user ? (
+				<Fragment>
+					<img
+						className={classes.userAvatar}
+						src={app_auth_user.avatar}
+						alt={`${app_auth_user.name}'s profile photo`}
+						title={app_auth_user.name}
+					/>
+					<div className={classes.authButton} onClick={handleLogout}>
+						Logout
+					</div>
+				</Fragment>
 			) : (
 				<Fragment>
 					<Link className={classes.linkReset} to={"/login"}>

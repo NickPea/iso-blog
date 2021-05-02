@@ -21,6 +21,6 @@ export function signJWT(payload: any): string {
  * @param token
  * @returns the orginal payload of the signed token
  */
-export function verifyJWT(token: string): string | object {
+export function verifyJWT(token: string): any {
 	return jwt.verify(token, JWT_SECRET_OR_PRIVATE_KEY);
 }

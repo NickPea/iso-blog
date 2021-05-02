@@ -12,6 +12,7 @@ const useStyles = createUseStyles({
 		//position content
 		display: "flex",
 		flexFlow: "row wrap",
+		alignItems: "center",
 		justifyContent: "space-between",
 	},
 	"@media (min-width: 600px)": {

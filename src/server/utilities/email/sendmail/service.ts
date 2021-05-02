@@ -6,7 +6,7 @@
 
 import nodemailer from "nodemailer";
 
-export const sendMailCommand = nodemailer.createTransport({
+export const consoleClient = nodemailer.createTransport({
 	sendmail: true,
 	// path: "/usr/sbin/sendmail",
 	newline: "unix",

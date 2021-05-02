@@ -7,14 +7,14 @@ dotenv.config();
 
 //APP
 export const PORT = process.env.PORT || 8080;
-export const DOMAIN_URL = process.env.DOMAIN_URL || 'localhost'
+export const DOMAIN_URL = process.env.DOMAIN_URL || 'http://localhost:8080'
 
 //DB
 export const MONGO_DB_CONNECTION_STRING =
 	process.env.MONGO_DB_CONNECTION_STRING || "mongodb://localhost/test";
 
 //JWT
-export const JWT_ID_TOKEN_NAME = process.env.JWT_ID_TOKEN_NAME || 'jwt-auth-token'
+export const AUTH_TOKEN_NAME = process.env.AUTH_TOKEN_NAME || 'jwt-auth-token'
 export const JWT_SECRET_OR_PRIVATE_KEY =
 	process.env.JWT_SECRET_OR_PRIVATE_KEY || "ssssshhh";
 

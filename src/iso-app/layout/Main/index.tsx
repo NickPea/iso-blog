@@ -38,9 +38,10 @@ const useStyles = createUseStyles({
 	},
 	"@media (min-width: 600px)": {
 		mainLayoutWrapper: {
+			gridTemplateRows: 'max-content auto auto',
 			gridTemplateColumns: "30% auto auto",
 			gridTemplateAreas: `
-			'top-nav top-nav top-nav'
+			'left-nav top-nav top-nav'
 			'left-nav main main'
 			'footer footer footer'
 		`,
@@ -50,7 +51,7 @@ const useStyles = createUseStyles({
 		mainLayoutWrapper: {
 			gridTemplateColumns: "25% auto 20%",
 			gridTemplateAreas: `
-			'top-nav top-nav top-nav'
+			'left-nav top-nav top-nav'
 			'left-nav main right-nav'
 			'footer footer footer'
 		`,
