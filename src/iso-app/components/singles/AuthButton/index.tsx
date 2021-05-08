@@ -33,9 +33,20 @@ const useStyles = createUseStyles({
 		width: 45,
 		objectFit: "cover",
 		objectPosition: "center",
+		border: "1px solid white",
 		borderRadius: "50%",
 
+		cursor: "pointer",
+
 		marginRight: 5,
+
+		"&:hover": {
+			transform: "translateY(1px)",
+			border: "1px solid var(--dull-text)",
+		},
+		"&:active": {
+			border: "1px solid white",
+		},
 	},
 });
 
@@ -70,12 +81,14 @@ const AuthButton = (props: Proptypes) => {
 		<Fragment>
 			{app_auth_user ? (
 				<Fragment>
-					<img
-						className={classes.userAvatar}
-						src={app_auth_user.avatar}
-						alt={`${app_auth_user.name}'s profile photo`}
-						title={app_auth_user.name}
-					/>
+					<Link to={"/dashboard"}>
+						<img
+							className={classes.userAvatar}
+							src={`/${app_auth_user.avatar}`}
+							alt={`${app_auth_user.name}'s profile photo`}
+							title={app_auth_user.name}
+						/>
+					</Link>
 					<div className={classes.authButton} onClick={handleLogout}>
 						Logout
 					</div>

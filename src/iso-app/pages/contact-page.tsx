@@ -2,15 +2,13 @@
 
 import React, { useState } from "react";
 import { createUseStyles } from "react-jss";
+import PageTitle from "../components/singles/PageTitle";
 import PageWrapper from "../components/utilities/PageWrapper";
 //components
 
 //assets
 
 const useStyles = createUseStyles({
-	pageTitle: {
-		marginBottom: "10%",
-	},
 	formWrapper: {
 		width: "100%",
 	},
@@ -94,7 +92,7 @@ const ContactPage = () => {
 
 	return (
 		<PageWrapper>
-			<h3 className={classes.pageTitle}>Contact Me</h3>
+			<PageTitle>Contact Me</PageTitle>
 			<form className={classes.formWrapper} onSubmit={handleSubmit}>
 				{/* name */}
 				<div className={classes.formControl}>

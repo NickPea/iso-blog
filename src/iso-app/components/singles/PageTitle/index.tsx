@@ -5,7 +5,7 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
 	pageTitle: {
-		marginBottom: "10%",
+		marginBottom: "5%",
 	},
 });
 

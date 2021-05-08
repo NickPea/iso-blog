@@ -17,7 +17,7 @@ import routing from "./routing";
 import "./boot";
 
 //assets
-app.use(express.static(path.join(__dirname, "./"))); //dist directory
+app.use(express.static(path.join(__dirname, "/"))); //dist directory
 
 //middleware
 app.use(middleware);

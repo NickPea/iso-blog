@@ -11,6 +11,8 @@ import LogoutPage from "../pages/auth/logout";
 import RegisterPage from "../pages/auth/register";
 import ResetPasswordPage from "../pages/auth/reset-password";
 import ResetPasswordEmailSentPage from "../pages/auth/reset-password-email-sent";
+import Dashboard from "../pages/dashboard";
+import NewArticle from "../pages/dashboard/new-article";
 
 export default [
 	{ path: "/", component: HomePage, label: "Home", navigatable: true },
@@ -66,6 +68,18 @@ export default [
 	{
 		path: "/reset-password-email-sent",
 		component: ResetPasswordEmailSentPage,
+		label: null,
+		navigatable: false,
+	},
+	{
+		path: "/dashboard",
+		component: Dashboard,
+		label: null,
+		navigatable: false,
+	},
+	{
+		path: "/dashboard/new-post",
+		component: NewArticle,
 		label: null,
 		navigatable: false,
 	},

@@ -9,11 +9,9 @@ import PageWrapper from "../components/utilities/PageWrapper";
 
 //assets
 import headshotImagePath from "../../server/assets/headshot.jpeg";
+import PageTitle from "../components/singles/PageTitle";
 
 const useStyles = createUseStyles({
-	pageTitle: {
-		marginBottom: "10%",
-	},
 	contentPosition: {
 		display: "flex",
 		flexFlow: "column nowrap",
@@ -47,7 +45,7 @@ const AboutPage = () => {
 	return (
 		<PageWrapper>
 			{/* title */}
-			<h3 className={classes.pageTitle}>About Me</h3>
+			<PageTitle>About Me</PageTitle>
 			{/* image */}
 			<div className={classes.contentPosition}>
 				<img className={classes.aboutImage} src={headshotImagePath} />

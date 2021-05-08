@@ -1,6 +1,6 @@
 //
 
-import React from "react";
+import React, { Fragment } from "react";
 import { createUseStyles } from "react-jss";
 import AuthButton from "../../singles/AuthButton";
 
@@ -13,14 +13,12 @@ const useStyles = createUseStyles({
 		display: "flex",
 		flexFlow: "row wrap",
 		alignItems: "center",
-		justifyContent: "space-between",
+		justifyContent: "flex-end",
 	},
+
 	"@media (min-width: 600px)": {
 		topNavWrapper: {
 			padding: "1%",
-
-			//position content
-			justifyContent: "flex-end",
 		},
 	},
 });

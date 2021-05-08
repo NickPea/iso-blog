@@ -11,8 +11,7 @@ import headshotImagePath from "../../../../server/assets/headshot.jpeg";
 
 const useStyles = createUseStyles({
 	leftNavWrapper: {
-		height: "100%",
-
+		
 		backgroundColor: "var(--primary-color)",
 		padding: "10% 0",
 
@@ -47,7 +46,7 @@ export default () => {
 		<div className={classes.leftNavWrapper}>
 			<img
 				className={classes.headShot}
-				src={headshotImagePath}
+				src={`/${headshotImagePath}`}
 				alt="headshot image"
 			/>
 			<h2 className={classes.title}>Nick Phillips</h2>

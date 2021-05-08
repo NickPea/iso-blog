@@ -13,6 +13,7 @@ import TopNav from "../../components/sections/TopNav";
 const useStyles = createUseStyles({
 	mainLayoutWrapper: {
 		display: "grid",
+		gridTemplateRows: 'max-content auto auto',
 		gridTemplateAreas: `
 			'top-nav top-nav top-nav'
 			'left-nav left-nav left-nav'
@@ -38,7 +39,6 @@ const useStyles = createUseStyles({
 	},
 	"@media (min-width: 600px)": {
 		mainLayoutWrapper: {
-			gridTemplateRows: 'max-content auto auto',
 			gridTemplateColumns: "30% auto auto",
 			gridTemplateAreas: `
 			'left-nav top-nav top-nav'
