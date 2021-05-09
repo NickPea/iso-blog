@@ -19,7 +19,7 @@ import {
 	compareHashedPassword,
 	hashPassword,
 } from "../../../utilities/hash/service";
-import { UserModel } from "../../../database/models/user";
+import { UserModel } from "../../../database/models";
 import { signJWT, verifyJWT } from "../../../utilities/jwt/service";
 import { consoleClient } from "../../../utilities/email/sendmail/service";
 
@@ -107,51 +107,38 @@ AuthenticationController.post(
 			.required()
 	),
 	async (req: Request, res: Response, next: NextFunction) => {
-		//extract data
-		const validated = req.body;
-
-		//hash password
 		try {
-			validated.hashedPassword = await hashPassword(validated.password);
-		} catch (error) {
-			res.status(500).send(error.stack);
-		}
+			//extract data
+			const validated = req.body;
 
-		//create new user instance
-		const newUser = new UserModel();
-		newUser.set({
-			name: validated.name,
-			email: validated.email,
-			password: validated.hashedPassword,
-		});
+			//hash password
+			validated.hashed_password = await hashPassword(validated.password);
 
-		//store image and attach to user
-		const newFile = req.files[0];
-		const newFileData = newFile.buffer;
-		const newFolderName = `users/id_${newUser.id}`;
-		const newFilePath = `${newFolderName}/${newFile.fieldname}-${Date.now()}-${
-			newFile.originalname
-		}`;
-		try {
-			await saveFileAsync(newFilePath, newFileData);
-			newUser.set({ avatar: newFilePath });
-		} catch (error) {
-			await removeFileAsync(newFilePath);
-			res.status(500).send(error.stack);
-		}
+			//create new user
+			const newUser = new UserModel();
+			newUser.set({
+				name: validated.name,
+				email: validated.email,
+				password: validated.hashed_password,
+			});
 
-		//persist user
-		let registeredUser = null;
-		try {
-			registeredUser = await newUser.save();
-		} catch (error) {
-			res.status(500).send(error.stack);
-		}
+			//store image and set avatar path on new user
+			const newFile = req.files[0];
+			const newFileData = newFile.buffer;
+			const newFolderName = `users/id_${newUser.id}`;
+			const newFilePath = `${newFolderName}/${
+				newFile.fieldname
+			}-${Date.now()}-${newFile.originalname}`;
 
-		//login by signing token with id and returning cookie
-		try {
-			registeredUser.set("password", undefined);
-			const payload = { user: registeredUser };
+			validated.avatar_path = await saveFileAsync(newFilePath, newFileData);
+			newUser.set("avatar_path", validated.avatar_path);
+
+			//persist user
+			await newUser.save();
+
+			//login (return auth_token/cookie)
+			newUser.set("password", undefined);
+			const payload = { user: newUser.toJSON() };
 			const jwt_id_token = signJWT(payload);
 
 			res
@@ -161,7 +148,7 @@ AuthenticationController.post(
 				})
 				.send("registered");
 		} catch (error) {
-			res.status(500).send(error.stack);
+			next(error);
 		}
 	}
 );
@@ -351,13 +338,19 @@ AuthenticationController.post(
 );
 
 /**
- * Get the authenticated user attributes
+ * GET AUTH USER DETAILS
  */
 AuthenticationController.get("/user", (req: Request | any, res: Response) => {
 	//
-	!req.user && res.json(null);
-	const userDetails = { name: req.user.name, avatar: req.user.avatar };
-	res.json(userDetails);
+	if (!req.user) {
+		res.sendStatus(401);
+	}
+	const auth_user_details = {
+		name: req.user.name,
+		avatar: req.user.avatar_path,
+	};
+
+	res.json(auth_user_details);
 });
 
 //

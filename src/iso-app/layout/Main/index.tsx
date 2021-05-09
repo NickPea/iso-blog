@@ -14,6 +14,7 @@ const useStyles = createUseStyles({
 	mainLayoutWrapper: {
 		display: "grid",
 		gridTemplateRows: 'max-content auto auto',
+		gridTemplateColumns: "100% 0 0",
 		gridTemplateAreas: `
 			'top-nav top-nav top-nav'
 			'left-nav left-nav left-nav'
@@ -39,7 +40,7 @@ const useStyles = createUseStyles({
 	},
 	"@media (min-width: 600px)": {
 		mainLayoutWrapper: {
-			gridTemplateColumns: "30% auto auto",
+			gridTemplateColumns: "30% 70% 0",
 			gridTemplateAreas: `
 			'left-nav top-nav top-nav'
 			'left-nav main main'
@@ -49,7 +50,7 @@ const useStyles = createUseStyles({
 	},
 	"@media (min-width: 900px)": {
 		mainLayoutWrapper: {
-			gridTemplateColumns: "25% auto 20%",
+			gridTemplateColumns: "25% 55% 20%",
 			gridTemplateAreas: `
 			'left-nav top-nav top-nav'
 			'left-nav main right-nav'

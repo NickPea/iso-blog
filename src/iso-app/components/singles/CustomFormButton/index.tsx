@@ -49,14 +49,14 @@ const useStyles = createUseStyles({
 interface Proptypes {
 	children: React.ReactNode;
 	type?: "button" | "submit" | "reset";
+	onClick?: any;
 }
 
 export default (props: Proptypes) => {
-	//
-
 	const classes = useStyles();
+
 	return (
-		<div className={classes.formControl}>
+		<div className={classes.formControl} onClick={props.onClick}>
 			<button
 				className={classes.customFormButton}
 				type={props.type || "submit"}
